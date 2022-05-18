@@ -1,35 +1,9 @@
 fileFormatVersion: 2
-guid: 10d293271b1b9fe43978d9618957a1c2
+guid: 4c6961e0d7d9bbd42b8a19b990bf6d2b
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable:
-  - first:
-      74: 1322215754798789034
-    second: Armature|2Walk.001
-  - first:
-      74: 4178230933265792572
-    second: Armature|2Walk.002
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal
-    second: {fileID: 2100000, guid: bcd59749219dc364fa7fa37be0a6117d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal shiny
-    second: {fileID: 2100000, guid: bde92940c6ffaf04690e14536f67e25a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal slightly shiny
-    second: {fileID: 2100000, guid: f93633e43265ff64286c51fc9063becc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Non metal
-    second: {fileID: 2100000, guid: cefa3c6a50131df45b5ca1bc4ae83876, type: 2}
+  internalIDToNameTable: []
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

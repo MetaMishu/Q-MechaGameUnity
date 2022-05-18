@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2ac307506a46ad14aa8651a9a601156a
+guid: 3d0852970f700094ca0c0d65ff0aa443
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
@@ -30,6 +30,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Non metal
     second: {fileID: 2100000, guid: cefa3c6a50131df45b5ca1bc4ae83876, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 8x8_colour_pallette
+    second: {fileID: 2800000, guid: a6b467bbf44c6cf4289fe33ceac8dc1b, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
