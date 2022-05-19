@@ -38,7 +38,7 @@ public partial class @ThirdPersonInputAction : IInputActionCollection2, IDisposa
                 },
                 {
                     ""name"": ""Look"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""f319e19b-59e1-4499-8d4b-8455026779eb"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",

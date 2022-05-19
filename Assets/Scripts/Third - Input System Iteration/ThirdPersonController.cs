@@ -60,6 +60,22 @@ public class ThirdPersonController : MonoBehaviour
         horizontalVelocity.y = 0;
         if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
             rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
+
+
+
+        LookAt();
+    }
+    // Method so that Player looks in the direction it is moving and not to rotate based on whatever the phyics engine is doing
+    private void LookAt()
+    {
+        Vector3 direction = rb.velocity;
+        direction.y = 0f;
+
+        // if theres input, the player will face the direction of the input, else its not going to move (no phyics engine sheningans)
+        if (move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
+            this.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        else   
+            rb.angularVelocity = Vector3.zero;
     }
 
     private Vector3 GetCameraRight(Camera playerCamera)
