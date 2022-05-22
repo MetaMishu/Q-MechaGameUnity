@@ -56,14 +56,17 @@ public class ThirdPersonController : MonoBehaviour
         //resetting the force so that it stops when the player stops pushing the button
         forceDirection = Vector3.zero;
 
+      
+
+        // this is a speed cap
         Vector3 horizontalVelocity = rb.velocity;
         horizontalVelocity.y = 0;
         if (horizontalVelocity.sqrMagnitude > maxSpeed * maxSpeed)
             rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
 
-
-
         LookAt();
+
+        
     }
     // Method so that Player looks in the direction it is moving and not to rotate based on whatever the phyics engine is doing
     private void LookAt()

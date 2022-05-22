@@ -62,6 +62,15 @@ public partial class @ThirdPersonInputAction : IInputActionCollection2, IDisposa
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""hideCursor"",
+                    ""type"": ""Button"",
+                    ""id"": ""65dec262-7023-4062-ada9-921f623cb21f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @ThirdPersonInputAction : IInputActionCollection2, IDisposa
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b4b12c49-60cb-4c65-915a-68a62e0363a6"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""hideCursor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @ThirdPersonInputAction : IInputActionCollection2, IDisposa
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_hideCursor = m_Player.FindAction("hideCursor", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +248,7 @@ public partial class @ThirdPersonInputAction : IInputActionCollection2, IDisposa
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_hideCursor;
     public struct PlayerActions
     {
         private @ThirdPersonInputAction m_Wrapper;
@@ -235,6 +257,7 @@ public partial class @ThirdPersonInputAction : IInputActionCollection2, IDisposa
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @hideCursor => m_Wrapper.m_Player_hideCursor;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,6 +279,9 @@ public partial class @ThirdPersonInputAction : IInputActionCollection2, IDisposa
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
+                @hideCursor.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHideCursor;
+                @hideCursor.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHideCursor;
+                @hideCursor.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHideCursor;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -272,6 +298,9 @@ public partial class @ThirdPersonInputAction : IInputActionCollection2, IDisposa
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @hideCursor.started += instance.OnHideCursor;
+                @hideCursor.performed += instance.OnHideCursor;
+                @hideCursor.canceled += instance.OnHideCursor;
             }
         }
     }
@@ -282,5 +311,6 @@ public partial class @ThirdPersonInputAction : IInputActionCollection2, IDisposa
         void OnLook(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnHideCursor(InputAction.CallbackContext context);
     }
 }
