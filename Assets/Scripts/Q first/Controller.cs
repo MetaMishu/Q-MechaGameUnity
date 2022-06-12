@@ -8,6 +8,8 @@ public class Controller : MonoBehaviour
     [SerializeField] CharacterController controller;
     [SerializeField] Transform cam;
     [SerializeField] GameObject mainBody;
+    [SerializeField] GameObject robot;
+    Animator V1animator;
 
 
     public float forwardSpeed = 10f;
@@ -35,12 +37,17 @@ public class Controller : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        V1animator = robot.GetComponent<Animator>();
+        V1animator.SetBool("activation", true);
     }
 
     void Update()
     {
         if (direction.magnitude >= 0.05f)
         {
+            V1animator.SetBool("isWalking", true);
+
+                //Robot pointing in direction of movement and camera
             float robotTargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float robotAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, robotTargetAngle, ref robotScmoothVelocity, robotSmoothTime);
             transform.rotation = Quaternion.Euler(0f, robotAngle, 0f);
@@ -49,8 +56,13 @@ public class Controller : MonoBehaviour
 
             controller.Move(moveDirection * Time.deltaTime * 10);
         }
+        if (direction.magnitude < 0.05f)
+        {
+            V1animator.SetBool("isWalking", false);
+        }
 
 
+            //Head rotation
         float mainBodyTargetAngle = (cam.eulerAngles.y);
         float mainBodyAngle = Mathf.SmoothDampAngle(mainBody.transform.eulerAngles.y, mainBodyTargetAngle, ref mainBodyVelocitySmooth, mainBodySmoothTime);
         mainBody.transform.rotation = Quaternion.Euler(0f, mainBodyAngle, 0f);
